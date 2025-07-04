@@ -76,7 +76,8 @@
         }
 
         function copyURL() {
-            const text = document.getElementById("urlBox").innerText;
+           // const text = document.getElementById("urlBox").innerText;
+            const text = 'https://shop.252826.xyz';
             navigator.clipboard.writeText(text).then(() => {
                 alert("地址已复制，请粘贴到浏览器打开！");
             }).catch(() => {
