@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>请在浏览器中打开</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+            background-color: #ffffff;
+            color: #333;
+            text-align: center;
+        }
+
+        .banner {
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+            display: block;
+        }
+
+        .notice {
+            margin: 20px auto;
+            font-size: 18px;
+            color: #0066cc;
+        }
+
+        .url-box {
+            margin: 20px auto;
+            font-size: 16px;
+            background: #f1f1f1;
+            padding: 10px;
+            border-radius: 6px;
+            width: 90%;
+            word-break: break-all;
+        }
+
+        .copy-btn {
+            margin-top: 12px;
+            background-color: #007aff;
+            color: white;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .copy-btn:active {
+            background-color: #005fcc;
+        }
+    </style>
+</head>
+
+<body>
+    <img class="banner" src="wxqq.png" alt="请在浏览器中打开" />
+
+    <div class="notice">
+        1. 本站不支持 <strong>微信</strong> 或 <strong>QQ</strong> 内访问<br>
+        2. 请点击右上角菜单，选择 <strong>在浏览器中打开</strong>
+    </div>
+
+    <!-- <div class="url-box" id="urlBox">https://shop.252826.xyz</div> -->
+    <button class="copy-btn" onclick="copyURL()">📋 点击复制本站地址</button>
+
+    <script>
+        const redirectURL = "https://shop.252826.xyz";
+
+        function isBlockedBrowser() {
+            const ua = navigator.userAgent.toLowerCase();
+            return ua.includes("micromessenger") || ua.includes("qq/") || ua.includes("qqbrowser");
+        }
+
+        function copyURL() {
+            const text = document.getElementById("urlBox").innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                alert("地址已复制，请粘贴到浏览器打开！");
+            }).catch(() => {
+                alert("复制失败，请手动复制地址。");
+            });
+        }
+
+        // 非微信/QQ，直接跳转
+        if (!isBlockedBrowser()) {
+            window.location.replace(redirectURL);
+        }
+    </script>
+</body>
+
+</html>
